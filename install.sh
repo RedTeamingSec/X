@@ -6,14 +6,11 @@ function error_exit {
     exit 1
 }
 
-# Menentukan versi libpam yang akan diunduh
+# Versi libpam yang akan diunduh
 LIBPAM_VERSION="1.5.1"
-LIBPAM_URL="https://github.com/linux-pam/linux-pam/releases/download/v${LIBPAM_VERSION}/pam-${LIBPAM_VERSION}.tar.xz"
+LIBPAM_URL="https://www.kernel.org/pub/linux/utils/kbd/kbd-2.5.0.tar.xz"
 
-# Menginstal dependensi yang dibutuhkan
-echo "Menginstal dependensi yang dibutuhkan..."
-
-# Unduh file tar.xz dari libpam
+# Mengunduh file libpam
 echo "Mengunduh libpam versi ${LIBPAM_VERSION}..."
 wget ${LIBPAM_URL} || error_exit "Gagal mengunduh libpam."
 
@@ -24,7 +21,7 @@ tar -xvf pam-${LIBPAM_VERSION}.tar.xz || error_exit "Gagal mengekstrak libpam."
 # Masuk ke direktori libpam
 cd pam-${LIBPAM_VERSION} || error_exit "Gagal masuk ke direktori libpam."
 
-# Menjalankan autogen.sh untuk menghasilkan file configure (jika tidak ada configure)
+# Menjalankan autogen.sh untuk menghasilkan configure (jika tidak ada configure)
 echo "Menjalankan autogen.sh untuk menghasilkan configure..."
 ./autogen.sh || error_exit "Gagal menjalankan autogen.sh."
 
